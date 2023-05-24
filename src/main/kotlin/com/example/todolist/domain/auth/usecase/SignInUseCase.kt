@@ -2,12 +2,12 @@ package com.example.todolist.domain.auth.usecase
 
 import com.example.todolist.domain.auth.common.exception.MismatchPasswordException
 import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
-import com.example.todolist.domain.auth.usecase.dto.MemberDto
+import com.example.todolist.domain.auth.usecase.dto.SignInDto
+import com.example.todolist.domain.auth.usecase.dto.SignUpDto
 import com.example.todolist.domain.member.common.exception.MemberNotFoundException
 import com.example.todolist.domain.member.entity.repository.MemberRepository
 import com.example.todolist.global.annotation.UseCaseWithTransaction
 import com.example.todolist.global.security.jwt.JwtGenerator
-import com.example.todolist.global.security.jwt.JwtParser
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
@@ -19,15 +19,15 @@ class SignInUseCase (
     private val jwtGenerator: JwtGenerator
 ) {
 
-    fun execute(memberDto: MemberDto) : TokenResponse =
-        validateLogin(memberDto)
-            .let { jwtGenerator.generateToken(memberDto.email,memberDto.role) }
+    fun execute(signInDto: SignInDto) : TokenResponse =
+        validateLogin(signInDto)
+            .let { jwtGenerator.generateToken(signInDto.email,signInDto.role) }
 
 
-    private fun validateLogin(memberDto: MemberDto) {
-        memberRepository.findByEmail(memberDto.email)
+    private fun validateLogin(signInDto: SignInDto) {
+        memberRepository.findByEmail(signInDto.email)
             .let { it ?: throw MemberNotFoundException() }
-            .let { passwordEncoder.matches(memberDto.password, it.password) }
+            .let { passwordEncoder.matches(signInDto.password, it.password) }
             .let {
                 if (it)
                     return

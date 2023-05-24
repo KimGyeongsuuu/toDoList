@@ -3,7 +3,7 @@ package com.example.todolist.domain.auth.usecase.dto
 import com.example.todolist.global.role.Role
 import java.util.UUID
 
-data class MemberDto(
+data class SignUpDto(
     val idx: UUID,
     val email: String,
     val password: String,
