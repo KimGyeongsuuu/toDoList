@@ -9,5 +9,4 @@ data class SignUpRequest(
     val password : String,
     @field:NotBlank
     val name : String
-
 )

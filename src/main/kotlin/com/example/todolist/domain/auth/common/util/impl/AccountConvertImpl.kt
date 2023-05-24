@@ -37,4 +37,5 @@ class AccountConvertImpl : AccountConverter {
             name = signUpDto.name,
             role = Role.MEMBER
         )
+
 }

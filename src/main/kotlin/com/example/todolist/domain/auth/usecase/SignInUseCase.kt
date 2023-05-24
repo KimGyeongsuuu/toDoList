@@ -28,10 +28,7 @@ class SignInUseCase (
         memberRepository.findByEmail(signInDto.email)
             .let { it ?: throw MemberNotFoundException() }
             .let { passwordEncoder.matches(signInDto.password, it.password) }
-            .let {
-                if (it)
-                    return
-                else throw MismatchPasswordException()
-            }
+            .let { if (it) return else throw MismatchPasswordException() }
     }
+
 }

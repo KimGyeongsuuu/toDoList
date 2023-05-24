@@ -6,7 +6,7 @@ import org.springframework.data.redis.core.TimeToLive
 import java.util.concurrent.TimeUnit
 import javax.persistence.Column
 
-@RedisHash(value = "refreshToken", timeToLive = 60L * 60 * 24 * 7)
+@RedisHash(value = "refreshToken")
 class RefreshToken(
 
     @Id
@@ -15,6 +15,5 @@ class RefreshToken(
     val refreshToken : String,
     @TimeToLive(unit = TimeUnit.SECONDS)
     val expiredTime: Long
-
 
 )
