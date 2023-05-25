@@ -18,17 +18,11 @@ class SignUpUseCase(
 ) {
 
     fun execute(signUpDto: SignUpDto) {
-        validateSignUp(signUpDto.email)
-            .let { accountConverter.toEntity(signUpDto,passwordEncoder.encode(signUpDto.password))}
-            .let { memberRepository.save(it) }
-    }
-
-    private fun validateSignUp(email : String) {
-
-        if (memberRepository.existsByEmail(email)) {
+        if (memberRepository.existsByEmail(signUpDto.email)) {
             throw DuplicateEmailException()
         }
-
+        accountConverter.toEntity(signUpDto,passwordEncoder.encode(signUpDto.password))
+            .let { memberRepository.save(it) }
     }
 
 }

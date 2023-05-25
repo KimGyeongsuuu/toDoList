@@ -20,13 +20,13 @@ class SignInUseCase (
 ) {
 
     fun execute(signInDto: SignInDto) : TokenInDto =
-        validateLogin(signInDto)
+        validateLogin(signInDto.email, signInDto.password)
             .let { jwtGenerator.generateToken(signInDto.email,signInDto.role) }
 
-    private fun validateLogin(signInDto: SignInDto) {
-        memberRepository.findByEmail(signInDto.email)
+    private fun validateLogin(email : String, password : String) {
+        memberRepository.findByEmail(email)
             .let { it ?: throw MemberNotFoundException() }
-            .let { passwordEncoder.matches(signInDto.password, it.password) }
+            .let { passwordEncoder.matches(password, it.password) }
             .let { if (it) return else throw MismatchPasswordException() }
     }
 
