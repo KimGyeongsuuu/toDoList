@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service
 @UseCaseWithTransaction
 class SignInUseCase (
     private val memberRepository : MemberRepository,
-    private val passwordEncoder: PasswordEncoder,
-    private val jwtGenerator: JwtGenerator
+    private val passwordEncoder : PasswordEncoder,
+    private val jwtGenerator : JwtGenerator
 ) {
 
     fun execute(signInDto: SignInDto) : TokenInDto {

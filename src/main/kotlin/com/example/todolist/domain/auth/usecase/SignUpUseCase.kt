@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service
 @Service
 @UseCaseWithTransaction
 class SignUpUseCase(
-    private val passwordEncoder: PasswordEncoder,
-    private val memberRepository: MemberRepository,
-    private val accountConverter: AccountConverter
+    private val passwordEncoder : PasswordEncoder,
+    private val memberRepository : MemberRepository,
+    private val accountConverter : AccountConverter
 ) {
 
     fun execute(signUpDto: SignUpDto) {

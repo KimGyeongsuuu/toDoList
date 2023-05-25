@@ -21,6 +21,6 @@ class Member(
     val name : String,
 
     @Enumerated(EnumType.STRING)
-    val role: Role
+    val role : Role
 
 ) : BaseUUIDEntity(idx)

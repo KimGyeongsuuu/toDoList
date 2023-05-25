@@ -14,6 +14,6 @@ class RefreshToken(
     @Column(name = "refreshToken")
     val refreshToken : String,
     @TimeToLive(unit = TimeUnit.SECONDS)
-    val expiredTime: Long
+    val expiredTime : Long
 
 )
