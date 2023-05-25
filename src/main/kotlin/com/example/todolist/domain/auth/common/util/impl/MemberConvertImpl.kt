@@ -1,6 +1,6 @@
 package com.example.todolist.domain.auth.common.util.impl
 
-import com.example.todolist.domain.auth.common.util.AccountConverter
+import com.example.todolist.domain.auth.common.util.MemberConverter
 import com.example.todolist.domain.auth.presentation.data.request.SignInRequest
 import com.example.todolist.domain.auth.presentation.data.request.SignUpRequest
 import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class AccountConvertImpl : AccountConverter {
+class MemberConvertImpl : MemberConverter {
     override fun toDto(signUpRequest: SignUpRequest): SignUpDto =
         SignUpDto(
             idx = UUID.randomUUID(),

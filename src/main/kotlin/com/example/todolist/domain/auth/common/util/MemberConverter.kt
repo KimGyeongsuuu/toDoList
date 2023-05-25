@@ -9,7 +9,7 @@ import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.domain.member.entity.Member
 
 
-interface AccountConverter {
+interface MemberConverter {
     fun toDto(signUpRequest: SignUpRequest): SignUpDto
     fun toDto(signInRequest: SignInRequest): SignInDto
     fun toResponse(tokenInDto: TokenInDto): TokenResponse

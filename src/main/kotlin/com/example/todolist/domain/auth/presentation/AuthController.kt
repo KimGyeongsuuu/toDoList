@@ -1,6 +1,6 @@
 package com.example.todolist.domain.auth.presentation
 
-import com.example.todolist.domain.auth.common.util.AccountConverter
+import com.example.todolist.domain.auth.common.util.MemberConverter
 import com.example.todolist.domain.auth.presentation.data.request.SignInRequest
 import com.example.todolist.domain.auth.presentation.data.request.SignUpRequest
 import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
@@ -18,7 +18,7 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/auth")
 class AuthController(
-    private val accountConverter: AccountConverter,
+    private val accountConverter: MemberConverter,
     private val signUpUseCase: SignUpUseCase,
     private val signInUseCase: SignInUseCase
 ) {

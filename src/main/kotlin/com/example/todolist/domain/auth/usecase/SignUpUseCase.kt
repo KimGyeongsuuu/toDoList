@@ -1,7 +1,7 @@
 package com.example.todolist.domain.auth.usecase
 
 import com.example.todolist.domain.auth.common.exception.DuplicateEmailException
-import com.example.todolist.domain.auth.common.util.AccountConverter
+import com.example.todolist.domain.auth.common.util.MemberConverter
 import com.example.todolist.domain.auth.usecase.dto.SignUpDto
 import com.example.todolist.domain.member.entity.repository.MemberRepository
 import com.example.todolist.global.annotation.UseCaseWithTransaction
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service
 class SignUpUseCase(
     private val passwordEncoder: PasswordEncoder,
     private val memberRepository: MemberRepository,
-    private val accountConverter: AccountConverter
+    private val accountConverter: MemberConverter
 ) {
 
     fun execute(signUpDto: SignUpDto) {
