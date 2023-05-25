@@ -36,7 +36,7 @@ open class SecurityConfig(
             .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
 
             // health
-            .antMatchers(HttpMethod.GET,"/health/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/health/**").permitAll()
 
             .anyRequest().denyAll()
             .and()

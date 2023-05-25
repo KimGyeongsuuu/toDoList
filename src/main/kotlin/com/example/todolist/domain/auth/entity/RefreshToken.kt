@@ -10,10 +10,10 @@ import javax.persistence.Column
 class RefreshToken(
 
     @Id
-    val email : String,
+    val email: String,
     @Column(name = "refreshToken")
-    val refreshToken : String,
+    val refreshToken: String,
     @TimeToLive(unit = TimeUnit.SECONDS)
-    val expiredTime : Long
+    val expiredTime: Long
 
 )

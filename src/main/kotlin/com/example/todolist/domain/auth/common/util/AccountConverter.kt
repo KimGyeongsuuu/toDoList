@@ -10,8 +10,8 @@ import com.example.todolist.domain.member.entity.Member
 
 
 interface AccountConverter {
-    fun toDto(signUpRequest : SignUpRequest) : SignUpDto
-    fun toDto(signInRequest : SignInRequest) : SignInDto
-    fun toResponse(tokenInDto : TokenInDto) : TokenResponse
-    fun toEntity(signUpDto : SignUpDto, encodePassword : String) : Member
+    fun toDto(signUpRequest: SignUpRequest): SignUpDto
+    fun toDto(signInRequest: SignInRequest): SignInDto
+    fun toResponse(tokenInDto: TokenInDto): TokenResponse
+    fun toEntity(signUpDto: SignUpDto, encodePassword: String): Member
 }

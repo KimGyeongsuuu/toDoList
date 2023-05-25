@@ -15,7 +15,6 @@ class GlobalExceptionHandler {
 
     private val log = LoggerFactory.getLogger(this.javaClass.simpleName)
 
-
     @ExceptionHandler(ToDoListException::class)
     fun globalExceptionHandler(request: HttpServletRequest, e: ToDoListException): ResponseEntity<ErrorResponse> {
         log.error(e.errorCode.message)
@@ -26,4 +25,5 @@ class GlobalExceptionHandler {
             HttpStatus.valueOf(errorCode.status)
         )
     }
+
 }

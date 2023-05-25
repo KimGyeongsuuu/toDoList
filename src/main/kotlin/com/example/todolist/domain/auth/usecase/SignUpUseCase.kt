@@ -12,16 +12,16 @@ import org.springframework.stereotype.Service
 @Service
 @UseCaseWithTransaction
 class SignUpUseCase(
-    private val passwordEncoder : PasswordEncoder,
-    private val memberRepository : MemberRepository,
-    private val accountConverter : AccountConverter
+    private val passwordEncoder: PasswordEncoder,
+    private val memberRepository: MemberRepository,
+    private val accountConverter: AccountConverter
 ) {
 
     fun execute(signUpDto: SignUpDto) {
         if (memberRepository.existsByEmail(signUpDto.email)) {
             throw DuplicateEmailException()
         }
-        accountConverter.toEntity(signUpDto,passwordEncoder.encode(signUpDto.password))
+        accountConverter.toEntity(signUpDto, passwordEncoder.encode(signUpDto.password))
             .let { memberRepository.save(it) }
     }
 

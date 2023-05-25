@@ -13,16 +13,15 @@ import org.springframework.stereotype.Service
 
 @Service
 @UseCaseWithTransaction
-class SignInUseCase (
-    private val memberRepository : MemberRepository,
-    private val passwordEncoder : PasswordEncoder,
-    private val jwtGenerator : JwtGenerator
+class SignInUseCase(
+    private val memberRepository: MemberRepository,
+    private val passwordEncoder: PasswordEncoder,
+    private val jwtGenerator: JwtGenerator
 ) {
 
-    fun execute(signInDto: SignInDto) : TokenInDto {
-        memberRepository.findByEmail(signInDto.email)
-            .let { it ?: throw MemberNotFoundException() }
-            .let { passwordEncoder.matches(signInDto.password, it.password) }
+    fun execute(signInDto: SignInDto): TokenInDto {
+        val member = memberRepository.findByEmail(signInDto.email) ?: throw MemberNotFoundException()
+        passwordEncoder.matches(signInDto.password, member.password)
             .let {
                 if (it)
                     return jwtGenerator.generateToken(signInDto.email, signInDto.role)

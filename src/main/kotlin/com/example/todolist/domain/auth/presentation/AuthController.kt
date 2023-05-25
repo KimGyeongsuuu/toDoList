@@ -24,16 +24,16 @@ class AuthController(
 ) {
 
     @PostMapping("/signup")
-    fun signup(@RequestBody @Valid signUpRequest : SignUpRequest) : ResponseEntity<Void> =
+    fun signup(@RequestBody @Valid signUpRequest: SignUpRequest): ResponseEntity<Void> =
         accountConverter.toDto(signUpRequest)
             .let { signUpUseCase.execute(it) }
-            .let { ResponseEntity.status(HttpStatus.CREATED).build()}
+            .let { ResponseEntity.status(HttpStatus.CREATED).build() }
 
     @PostMapping("/signin")
-    fun signin(@RequestBody @Valid signInRequest : SignInRequest) : ResponseEntity<TokenResponse> =
+    fun signin(@RequestBody @Valid signInRequest: SignInRequest): ResponseEntity<TokenResponse> =
         accountConverter.toDto(signInRequest)
             .let { signInUseCase.execute(it) }
             .let { accountConverter.toResponse(it) }
-            .let { ResponseEntity.ok(it)}
+            .let { ResponseEntity.ok(it) }
 
 }

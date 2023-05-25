@@ -12,15 +12,15 @@ class Member(
     override val idx: UUID,
 
     @Column(name = "email")
-    val email : String,
+    val email: String,
 
     @Column(name = "password")
-    val password : String,
+    val password: String,
 
     @Column(name = "name")
-    val name : String,
+    val name: String,
 
     @Enumerated(EnumType.STRING)
-    val role : Role
+    val role: Role
 
 ) : BaseUUIDEntity(idx)

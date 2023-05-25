@@ -4,9 +4,9 @@ import javax.validation.constraints.NotBlank
 
 data class SignUpRequest(
     @field:NotBlank
-    val email : String,
+    val email: String,
     @field:NotBlank
-    val password : String,
+    val password: String,
     @field:NotBlank
-    val name : String
+    val name: String
 )

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse
 @Component
 class JwtRequestFilter(
     private val jwtParser: JwtParser
-): OncePerRequestFilter() {
+) : OncePerRequestFilter() {
 
     override fun doFilterInternal(
         request: HttpServletRequest,
