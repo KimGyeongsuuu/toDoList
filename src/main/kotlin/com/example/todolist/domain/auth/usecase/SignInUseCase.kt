@@ -3,7 +3,7 @@ package com.example.todolist.domain.auth.usecase
 import com.example.todolist.domain.auth.common.exception.MismatchPasswordException
 import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
 import com.example.todolist.domain.auth.usecase.dto.SignInDto
-import com.example.todolist.domain.auth.usecase.dto.SignUpDto
+import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.domain.member.common.exception.MemberNotFoundException
 import com.example.todolist.domain.member.entity.repository.MemberRepository
 import com.example.todolist.global.annotation.UseCaseWithTransaction
@@ -19,10 +19,9 @@ class SignInUseCase (
     private val jwtGenerator: JwtGenerator
 ) {
 
-    fun execute(signInDto: SignInDto) : TokenResponse =
+    fun execute(signInDto: SignInDto) : TokenInDto =
         validateLogin(signInDto)
             .let { jwtGenerator.generateToken(signInDto.email,signInDto.role) }
-
 
     private fun validateLogin(signInDto: SignInDto) {
         memberRepository.findByEmail(signInDto.email)

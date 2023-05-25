@@ -3,8 +3,10 @@ package com.example.todolist.domain.auth.common.util.impl
 import com.example.todolist.domain.auth.common.util.AccountConverter
 import com.example.todolist.domain.auth.presentation.data.request.SignInRequest
 import com.example.todolist.domain.auth.presentation.data.request.SignUpRequest
+import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
 import com.example.todolist.domain.auth.usecase.dto.SignInDto
 import com.example.todolist.domain.auth.usecase.dto.SignUpDto
+import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.domain.member.entity.Member
 import com.example.todolist.global.role.Role
 import org.springframework.stereotype.Component
@@ -27,6 +29,14 @@ class AccountConvertImpl : AccountConverter {
             email = signInRequest.email,
             password = signInRequest.password,
             role = Role.MEMBER
+        )
+
+    override fun toDto(tokenInDto: TokenInDto): TokenResponse =
+        TokenResponse(
+            accessToken = tokenInDto.accessToken,
+            refreshToken = tokenInDto.refreshToken,
+            accessTokenExp = tokenInDto.accessTokenExp,
+            refreshTokenExp = tokenInDto.refreshTokenExp
         )
 
     override fun toEntity(signUpDto: SignUpDto, encodePassword: String): Member =

@@ -33,6 +33,7 @@ class AuthController(
     fun signin(@RequestBody @Valid signInRequest: SignInRequest) : ResponseEntity<TokenResponse> =
         accountConverter.toDto(signInRequest)
             .let { signInUseCase.execute(it) }
+            .let { accountConverter.toDto(it) }
             .let { ResponseEntity.ok(it)}
 
 }

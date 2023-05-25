@@ -3,6 +3,7 @@ package com.example.todolist.global.security.jwt
 import com.example.todolist.domain.auth.entity.RefreshToken
 import com.example.todolist.domain.auth.entity.repository.RefreshTokenRepository
 import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
+import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.global.role.Role
 import com.example.todolist.global.security.jwt.properties.JwtExpTimeProperties
 import com.example.todolist.global.security.jwt.properties.JwtProperties
@@ -19,8 +20,8 @@ class JwtGenerator(
     private val jwtExpTimeProperties: JwtExpTimeProperties
 ) {
 
-    fun generateToken(email: String, role: Role): TokenResponse =
-        TokenResponse(
+    fun generateToken(email: String, role: Role): TokenInDto =
+        TokenInDto(
             accessToken = generateAccessToken(email, role),
             refreshToken = generateRefreshToken(email),
             accessTokenExp = LocalDateTime.now().plusSeconds(jwtExpTimeProperties.accessExp.toLong()),
