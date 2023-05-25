@@ -19,15 +19,16 @@ class SignInUseCase (
     private val jwtGenerator: JwtGenerator
 ) {
 
-    fun execute(signInDto: SignInDto) : TokenInDto =
-        validateLogin(signInDto.email, signInDto.password)
-            .let { jwtGenerator.generateToken(signInDto.email,signInDto.role) }
-
-    private fun validateLogin(email : String, password : String) {
-        memberRepository.findByEmail(email)
+    fun execute(signInDto: SignInDto) : TokenInDto {
+        memberRepository.findByEmail(signInDto.email)
             .let { it ?: throw MemberNotFoundException() }
-            .let { passwordEncoder.matches(password, it.password) }
-            .let { if (it) return else throw MismatchPasswordException() }
+            .let { passwordEncoder.matches(signInDto.password, it.password) }
+            .let {
+                if (it)
+                    return jwtGenerator.generateToken(signInDto.email, signInDto.role)
+                else
+                    throw MismatchPasswordException()
+            }
     }
 
 }
