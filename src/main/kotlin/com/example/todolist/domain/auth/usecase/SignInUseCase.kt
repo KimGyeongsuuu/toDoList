@@ -9,9 +9,7 @@ import com.example.todolist.domain.member.entity.repository.MemberRepository
 import com.example.todolist.global.annotation.UseCaseWithTransaction
 import com.example.todolist.global.security.jwt.JwtGenerator
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.stereotype.Service
 
-@Service
 @UseCaseWithTransaction
 class SignInUseCase(
     private val memberRepository: MemberRepository,

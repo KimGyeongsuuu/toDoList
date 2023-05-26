@@ -6,10 +6,7 @@ import com.example.todolist.domain.auth.usecase.dto.SignUpDto
 import com.example.todolist.domain.member.entity.repository.MemberRepository
 import com.example.todolist.global.annotation.UseCaseWithTransaction
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.stereotype.Service
 
-
-@Service
 @UseCaseWithTransaction
 class SignUpUseCase(
     private val passwordEncoder: PasswordEncoder,
