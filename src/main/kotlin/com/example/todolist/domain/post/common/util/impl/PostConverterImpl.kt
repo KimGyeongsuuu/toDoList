@@ -1,9 +1,11 @@
 package com.example.todolist.domain.post.common.util.impl
 
 import com.example.todolist.domain.member.entity.Member
+import com.example.todolist.domain.member.presentation.data.response.MemberResponse
 import com.example.todolist.domain.post.common.util.PostConverter
 import com.example.todolist.domain.post.entity.Post
 import com.example.todolist.domain.post.presentation.data.request.CreatePostRequest
+import com.example.todolist.domain.post.presentation.data.response.PostResponse
 import org.springframework.stereotype.Component
 import java.util.*
 
@@ -16,7 +18,16 @@ class PostConverterImpl(
             idx = UUID.randomUUID(),
             title = createPostRequest.title,
             content = createPostRequest.content,
+            member = member,
+            localDate = createPostRequest.localDate
+        )
+
+    override fun toDto(post: Post, member: MemberResponse): PostResponse =
+        PostResponse(
+            title = post.title,
+            content = post.content,
             member = member
         )
+
 
 }

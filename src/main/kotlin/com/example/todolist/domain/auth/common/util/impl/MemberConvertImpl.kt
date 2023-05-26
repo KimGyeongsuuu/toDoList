@@ -8,6 +8,7 @@ import com.example.todolist.domain.auth.usecase.dto.SignInDto
 import com.example.todolist.domain.auth.usecase.dto.SignUpDto
 import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.domain.member.entity.Member
+import com.example.todolist.domain.member.presentation.data.response.MemberResponse
 import com.example.todolist.global.role.Role
 import org.springframework.stereotype.Component
 import java.util.*
@@ -29,6 +30,13 @@ class MemberConvertImpl : MemberConverter {
             email = signInRequest.email,
             password = signInRequest.password,
             role = Role.MEMBER
+        )
+
+    override fun toMemberResponse(member: Member): MemberResponse =
+        MemberResponse(
+            idx = member.idx,
+            email = member.email,
+            name = member.name
         )
 
     override fun toResponse(tokenInDto: TokenInDto): TokenResponse =
