@@ -1,9 +1,9 @@
-package com.example.todolist.domain.post.presentation.data.request
+package com.example.todolist.domain.todolist.presentation.data.request
 
 import java.time.LocalDate
 import javax.validation.constraints.NotBlank
 
-data class CreatePostRequest(
+data class ToDoListRequest(
     @field:NotBlank
     val title:String,
     @field:NotBlank
