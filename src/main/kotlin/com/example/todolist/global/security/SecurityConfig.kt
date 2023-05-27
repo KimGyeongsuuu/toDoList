@@ -35,11 +35,11 @@ open class SecurityConfig(
             // auth
             .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
 
-            // post
-            .antMatchers(HttpMethod.GET, "/post/**").authenticated()
-            .antMatchers(HttpMethod.POST, "/post/**").authenticated()
-            .antMatchers(HttpMethod.PATCH, "/post/**").authenticated()
-            .antMatchers(HttpMethod.DELETE, "/post/**").authenticated()
+            // todolist
+            .antMatchers(HttpMethod.GET, "/todolist/**").authenticated()
+            .antMatchers(HttpMethod.POST, "/todolist/**").authenticated()
+            .antMatchers(HttpMethod.PATCH, "/todolist/**").authenticated()
+            .antMatchers(HttpMethod.DELETE, "/todolist/**").authenticated()
 
             // health
             .antMatchers(HttpMethod.GET, "/health/**").permitAll()
