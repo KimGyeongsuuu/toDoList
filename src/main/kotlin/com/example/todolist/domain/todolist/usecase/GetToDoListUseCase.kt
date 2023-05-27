@@ -3,7 +3,7 @@ package com.example.todolist.domain.todolist.usecase
 import com.example.todolist.domain.auth.common.util.MemberUtil
 import com.example.todolist.domain.todolist.common.util.ToDoListConverter
 import com.example.todolist.domain.todolist.entity.repository.ToDoListRepository
-import com.example.todolist.domain.todolist.presentation.data.response.ToDoListResponse
+import com.example.todolist.domain.todolist.usecase.dto.ToDoListDto
 import com.example.todolist.global.annotation.UseCaseWithReadOnlyTransaction
 
 @UseCaseWithReadOnlyTransaction
@@ -13,8 +13,8 @@ class GetToDoListUseCase(
     private val memberUtil: MemberUtil
 ) {
 
-    fun execute() : List<ToDoListResponse> =
+    fun execute(): List<ToDoListDto> =
         postRepository.findAll()
-            .map { toDoListConverter.toToDoListResponse(it, memberUtil.currentMember()) }
+            .map { toDoListConverter.toToDoListDto(it, memberUtil.currentMember()) }
 
 }

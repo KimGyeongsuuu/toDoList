@@ -1,7 +1,6 @@
 package com.example.todolist.domain.auth.usecase
 
 import com.example.todolist.domain.auth.common.exception.MismatchPasswordException
-import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
 import com.example.todolist.domain.auth.usecase.dto.SignInDto
 import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.domain.member.common.exception.MemberNotFoundException
