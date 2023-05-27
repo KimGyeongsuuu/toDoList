@@ -4,5 +4,4 @@ import com.example.todolist.domain.member.entity.Member
 
 interface MemberUtil {
     fun currentMember(): Member
-    fun findMemberByEmail(email: String): Member
 }

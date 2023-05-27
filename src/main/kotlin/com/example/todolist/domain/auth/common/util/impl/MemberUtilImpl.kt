@@ -26,7 +26,7 @@ class MemberUtilImpl(
         return findMemberByEmail(email)
     }
 
-    override fun findMemberByEmail(email: String): Member =
+    private fun findMemberByEmail(email: String): Member =
         memberRepository.findByEmail(email) ?: throw MemberNotFoundException()
 
 }
