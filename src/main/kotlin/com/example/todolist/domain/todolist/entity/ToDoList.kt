@@ -7,7 +7,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-class ToDoList (
+class ToDoList(
     @Column(name = "post_idx")
     override val idx: UUID,
     @Column(name = "title")

@@ -1,7 +1,7 @@
 package com.example.todolist.domain.todolist.common.util.impl
 
+import com.example.todolist.domain.auth.common.util.MemberConverter
 import com.example.todolist.domain.member.entity.Member
-import com.example.todolist.domain.member.presentation.data.response.MemberResponse
 import com.example.todolist.domain.todolist.common.util.ToDoListConverter
 import com.example.todolist.domain.todolist.entity.ToDoList
 import com.example.todolist.domain.todolist.presentation.data.request.ToDoListRequest
@@ -11,8 +11,9 @@ import java.util.*
 
 @Component
 class ToDoListConverterImpl(
-
+    private val memberConverter: MemberConverter
 ) : ToDoListConverter{
+
     override fun toEntity(toDoListRequest: ToDoListRequest, member: Member): ToDoList =
         ToDoList(
             idx = UUID.randomUUID(),
@@ -22,12 +23,11 @@ class ToDoListConverterImpl(
             localDate = toDoListRequest.localDate
         )
 
-    override fun toDto(toDoList: ToDoList, member: MemberResponse): ToDoListResponse =
+    override fun toToDoListResponse(toDoList: ToDoList, member: Member): ToDoListResponse =
         ToDoListResponse(
             title = toDoList.title,
             content = toDoList.content,
-            member = member
+            writer = memberConverter.toMemberResponse(member)
         )
-
 
 }

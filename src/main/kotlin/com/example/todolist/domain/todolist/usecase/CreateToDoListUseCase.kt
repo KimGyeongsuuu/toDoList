@@ -12,6 +12,7 @@ class CreateToDoListUseCase(
     private val toDoListConverter: ToDoListConverter,
     private val memberUtil: MemberUtil
 ) {
+
     fun execute(toDoListRequest: ToDoListRequest) {
         postRepository.save(toDoListConverter.toEntity(toDoListRequest, memberUtil.currentMember()))
     }

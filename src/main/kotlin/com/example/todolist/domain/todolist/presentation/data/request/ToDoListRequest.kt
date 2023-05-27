@@ -5,8 +5,8 @@ import javax.validation.constraints.NotBlank
 
 data class ToDoListRequest(
     @field:NotBlank
-    val title:String,
+    val title: String,
     @field:NotBlank
-    val content:String,
+    val content: String,
     val localDate: LocalDate
 )

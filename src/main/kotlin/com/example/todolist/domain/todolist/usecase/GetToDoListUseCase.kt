@@ -9,8 +9,8 @@ import com.example.todolist.global.annotation.UseCaseWithReadOnlyTransaction
 @UseCaseWithReadOnlyTransaction
 class GetToDoListUseCase(
     private val postRepository: ToDoListRepository,
-    private val memberUtil: MemberUtil,
-    private val toDoListConverter: ToDoListConverter
+    private val toDoListConverter: ToDoListConverter,
+    private val memberUtil: MemberUtil
 ) {
 
     fun execute() : List<ToDoListResponse> =
