@@ -14,20 +14,20 @@ class ToDoListConverterImpl(
     private val memberConverter: MemberConverter
 ) : ToDoListConverter{
 
+    override fun toToDoListResponse(toDoList: ToDoList, member: Member): ToDoListResponse =
+        ToDoListResponse(
+            title = toDoList.title,
+            content = toDoList.content,
+            writer = memberConverter.toMemberResponse(member)
+        )
+
     override fun toEntity(toDoListRequest: ToDoListRequest, member: Member): ToDoList =
         ToDoList(
             idx = UUID.randomUUID(),
             title = toDoListRequest.title,
             content = toDoListRequest.content,
             member = member,
-            localDate = toDoListRequest.localDate
-        )
-
-    override fun toToDoListResponse(toDoList: ToDoList, member: Member): ToDoListResponse =
-        ToDoListResponse(
-            title = toDoList.title,
-            content = toDoList.content,
-            writer = memberConverter.toMemberResponse(member)
+            date = toDoListRequest.date
         )
 
 }

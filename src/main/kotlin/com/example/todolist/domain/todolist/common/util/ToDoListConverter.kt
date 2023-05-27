@@ -6,6 +6,6 @@ import com.example.todolist.domain.todolist.presentation.data.request.ToDoListRe
 import com.example.todolist.domain.todolist.presentation.data.response.ToDoListResponse
 
 interface ToDoListConverter {
-    fun toEntity(toDoListRequest: ToDoListRequest, member: Member): ToDoList
     fun toToDoListResponse(toDoList: ToDoList, member: Member): ToDoListResponse
+    fun toEntity(toDoListRequest: ToDoListRequest, member: Member): ToDoList
 }

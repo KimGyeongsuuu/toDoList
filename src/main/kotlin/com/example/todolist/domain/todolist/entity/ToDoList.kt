@@ -18,5 +18,5 @@ class ToDoList(
     @JoinColumn(name = "member_id")
     val member: Member,
     @Column(name = "date")
-    val localDate: LocalDate
+    val date: LocalDate
 ) : BaseUUIDEntity(idx)

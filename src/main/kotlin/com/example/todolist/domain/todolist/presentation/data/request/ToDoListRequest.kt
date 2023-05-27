@@ -8,5 +8,5 @@ data class ToDoListRequest(
     val title: String,
     @field:NotBlank
     val content: String,
-    val localDate: LocalDate
+    val date: LocalDate
 )
