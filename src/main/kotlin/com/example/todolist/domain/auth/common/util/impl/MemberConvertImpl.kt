@@ -15,7 +15,8 @@ import java.util.*
 
 @Component
 class MemberConvertImpl : MemberConverter {
-    override fun toDto(signUpRequest: SignUpRequest): SignUpDto =
+
+    override fun toSignUpDto(signUpRequest: SignUpRequest): SignUpDto =
         SignUpDto(
             idx = UUID.randomUUID(),
             email = signUpRequest.email,
@@ -24,7 +25,7 @@ class MemberConvertImpl : MemberConverter {
             role = Role.MEMBER
         )
 
-    override fun toDto(signInRequest: SignInRequest): SignInDto =
+    override fun toSignInDto(signInRequest: SignInRequest): SignInDto =
         SignInDto(
             idx = UUID.randomUUID(),
             email = signInRequest.email,
@@ -39,7 +40,7 @@ class MemberConvertImpl : MemberConverter {
             name = member.name
         )
 
-    override fun toResponse(tokenInDto: TokenInDto): TokenResponse =
+    override fun toTokenResponse(tokenInDto: TokenInDto): TokenResponse =
         TokenResponse(
             accessToken = tokenInDto.accessToken,
             refreshToken = tokenInDto.refreshToken,

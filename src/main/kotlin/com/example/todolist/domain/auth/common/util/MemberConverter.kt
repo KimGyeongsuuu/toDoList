@@ -11,9 +11,9 @@ import com.example.todolist.domain.member.presentation.data.response.MemberRespo
 
 
 interface MemberConverter {
-    fun toDto(signUpRequest: SignUpRequest): SignUpDto
-    fun toDto(signInRequest: SignInRequest): SignInDto
-    fun toMemberResponse(member: Member) : MemberResponse
-    fun toResponse(tokenInDto: TokenInDto): TokenResponse
+    fun toSignUpDto(signUpRequest: SignUpRequest): SignUpDto
+    fun toSignInDto(signInRequest: SignInRequest): SignInDto
+    fun toMemberResponse(member: Member): MemberResponse
+    fun toTokenResponse(tokenInDto: TokenInDto): TokenResponse
     fun toEntity(signUpDto: SignUpDto, encodePassword: String): Member
 }
