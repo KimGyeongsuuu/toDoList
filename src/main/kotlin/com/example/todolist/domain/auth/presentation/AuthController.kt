@@ -18,22 +18,22 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/auth")
 class AuthController(
-    private val accountConverter: MemberConverter,
+    private val memberConverter: MemberConverter,
     private val signUpUseCase: SignUpUseCase,
     private val signInUseCase: SignInUseCase
 ) {
 
     @PostMapping("/signup")
     fun signup(@RequestBody @Valid signUpRequest: SignUpRequest): ResponseEntity<Void> =
-        accountConverter.toDto(signUpRequest)
+        memberConverter.toSignUpDto(signUpRequest)
             .let { signUpUseCase.execute(it) }
             .let { ResponseEntity.status(HttpStatus.CREATED).build() }
 
     @PostMapping("/signin")
     fun signin(@RequestBody @Valid signInRequest: SignInRequest): ResponseEntity<TokenResponse> =
-        accountConverter.toDto(signInRequest)
+        memberConverter.toSignInDto(signInRequest)
             .let { signInUseCase.execute(it) }
-            .let { accountConverter.toResponse(it) }
+            .let { memberConverter.toTokenResponse(it) }
             .let { ResponseEntity.ok(it) }
 
 }
