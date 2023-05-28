@@ -19,13 +19,13 @@ class ToDoController(
 ) {
 
     @PostMapping
-    fun createPost(@RequestBody @Valid toDoRequest: ToDoRequest): ResponseEntity<Void> =
+    fun createToDo(@RequestBody @Valid toDoRequest: ToDoRequest): ResponseEntity<Void> =
         toDoConverter.toCreateToDoDto(toDoRequest)
             .let { createToDoUseCase.execute(it) }
             .let { ResponseEntity.status(HttpStatus.CREATED).build() }
 
     @GetMapping
-    fun getPost(): ResponseEntity<List<ToDoResponse>> =
+    fun getToDo(): ResponseEntity<List<ToDoResponse>> =
         getToDoUseCase.execute()
             .map { toDoConverter.toToDoResponse(it,it.writer) }
             .let { ResponseEntity.ok(it) }
