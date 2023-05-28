@@ -11,14 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder
 class SignUpUseCase(
     private val passwordEncoder: PasswordEncoder,
     private val memberRepository: MemberRepository,
-    private val accountConverter: MemberConverter
+    private val memberConverter: MemberConverter
 ) {
 
     fun execute(signUpDto: SignUpDto) {
         if (memberRepository.existsByEmail(signUpDto.email)) {
             throw DuplicateEmailException()
         }
-        accountConverter.toEntity(signUpDto, passwordEncoder.encode(signUpDto.password))
+        memberConverter.toEntity(signUpDto, passwordEncoder.encode(signUpDto.password))
             .let { memberRepository.save(it) }
     }
 
