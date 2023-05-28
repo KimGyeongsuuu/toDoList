@@ -35,6 +35,12 @@ open class SecurityConfig(
             // auth
             .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
 
+            // todo
+            .antMatchers(HttpMethod.GET, "/todo/**").authenticated()
+            .antMatchers(HttpMethod.POST, "/todo/**").authenticated()
+            .antMatchers(HttpMethod.PATCH, "/todo/**").authenticated()
+            .antMatchers(HttpMethod.DELETE, "/todo/**").authenticated()
+
             // health
             .antMatchers(HttpMethod.GET, "/health/**").permitAll()
 
