@@ -1,4 +1,4 @@
-package com.example.todolist.domain.todolist.entity
+package com.example.todolist.domain.todo.entity
 
 import com.example.todolist.domain.member.entity.Member
 import com.example.todolist.global.entity.BaseUUIDEntity
@@ -7,7 +7,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-class ToDoList(
+class ToDo(
     @Column(name = "post_idx")
     override val idx: UUID,
     @Column(name = "title")
