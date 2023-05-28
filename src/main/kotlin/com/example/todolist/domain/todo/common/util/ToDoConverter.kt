@@ -8,8 +8,8 @@ import com.example.todolist.domain.todo.usecase.dto.CreateToDoDto
 import com.example.todolist.domain.todo.usecase.dto.ToDoDto
 
 interface ToDoConverter {
-    fun toToDoDto(toDoList: ToDo, member: Member): ToDoDto
-    fun toToDoResponse(toDoListDto: ToDoDto, member: Member): ToDoResponse
-    fun toCreateToDoDto(toDoListRequest: ToDoRequest): CreateToDoDto
-    fun toEntity(createToDoListDto: CreateToDoDto, member: Member): ToDo
+    fun toToDoDto(toDo: ToDo, member: Member): ToDoDto
+    fun toToDoResponse(toDoDto: ToDoDto, member: Member): ToDoResponse
+    fun toCreateToDoDto(toDoRequest: ToDoRequest): CreateToDoDto
+    fun toEntity(createToDoDto: CreateToDoDto, member: Member): ToDo
 }

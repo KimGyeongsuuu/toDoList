@@ -16,34 +16,34 @@ class ToDoConverterImpl(
     private val memberConverter: MemberConverter
 ) : ToDoConverter {
 
-    override fun toToDoDto(toDoList: ToDo, member: Member): ToDoDto =
+    override fun toToDoDto(toDo: ToDo, member: Member): ToDoDto =
         ToDoDto(
-            title = toDoList.title,
-            content = toDoList.content,
+            title = toDo.title,
+            content = toDo.content,
             writer = member
         )
 
-    override fun toToDoResponse(toDoListDto: ToDoDto, member: Member): ToDoResponse =
+    override fun toToDoResponse(toDoDto: ToDoDto, member: Member): ToDoResponse =
         ToDoResponse(
-            title = toDoListDto.title,
-            content = toDoListDto.content,
+            title = toDoDto.title,
+            content = toDoDto.content,
             writer = memberConverter.toMemberResponse(member)
         )
 
-    override fun toCreateToDoDto(toDoListRequest: ToDoRequest): CreateToDoDto =
+    override fun toCreateToDoDto(toDoRequest: ToDoRequest): CreateToDoDto =
         CreateToDoDto(
-            title = toDoListRequest.title,
-            content = toDoListRequest.content,
-            date = toDoListRequest.date
+            title = toDoRequest.title,
+            content = toDoRequest.content,
+            date = toDoRequest.date
         )
 
-    override fun toEntity(createToDoListDto: CreateToDoDto, member: Member): ToDo =
+    override fun toEntity(createToDoDto: CreateToDoDto, member: Member): ToDo =
         ToDo(
             idx = UUID.randomUUID(),
-            title = createToDoListDto.title,
-            content = createToDoListDto.content,
+            title = createToDoDto.title,
+            content = createToDoDto.content,
             member = member,
-            date = createToDoListDto.date
+            date = createToDoDto.date
         )
 
 }

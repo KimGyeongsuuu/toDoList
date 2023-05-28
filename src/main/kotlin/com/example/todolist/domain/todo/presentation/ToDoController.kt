@@ -19,8 +19,8 @@ class ToDoController(
 ) {
 
     @PostMapping
-    fun createPost(@RequestBody @Valid toDoListRequest: ToDoRequest): ResponseEntity<Void> =
-        toDoConverter.toCreateToDoDto(toDoListRequest)
+    fun createPost(@RequestBody @Valid toDoRequest: ToDoRequest): ResponseEntity<Void> =
+        toDoConverter.toCreateToDoDto(toDoRequest)
             .let { createToDoUseCase.execute(it) }
             .let { ResponseEntity.status(HttpStatus.CREATED).build() }
 
