@@ -11,6 +11,7 @@ class JwtProperties(
     accessSecret: String,
     refreshSecret: String
 ) {
+
     val accessSecret: Key
     val refreshSecret: Key
 
