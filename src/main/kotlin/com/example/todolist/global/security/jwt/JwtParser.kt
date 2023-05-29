@@ -27,6 +27,9 @@ class JwtParser(
             .let { it ?: return null }
             .let { if (it.startsWith(JwtProperties.TOKEN_PREFIX)) it.replace(JwtProperties.TOKEN_PREFIX, "") else null }
 
+    fun parseRefreshToken(refreshToken: String): String? =
+        if (refreshToken.startsWith(JwtProperties.TOKEN_PREFIX)) refreshToken.replace(JwtProperties.TOKEN_PREFIX, "") else null
+
     fun authentication(accessToken: String): Authentication =
         getAuthority(getTokenBody(accessToken, jwtProperties.accessSecret))
             .let { UsernamePasswordAuthenticationToken(it, "", it.authorities) }
@@ -44,6 +47,5 @@ class JwtParser(
             Role.ADMIN.name -> adminDetailsService.loadUserByUsername(body.subject)
             else -> throw InvalidTokenException()
         }
-
 
 }

@@ -2,7 +2,6 @@ package com.example.todolist.global.security.jwt
 
 import com.example.todolist.domain.auth.entity.RefreshToken
 import com.example.todolist.domain.auth.entity.repository.RefreshTokenRepository
-import com.example.todolist.domain.auth.presentation.data.response.TokenResponse
 import com.example.todolist.domain.auth.usecase.dto.TokenInDto
 import com.example.todolist.global.role.Role
 import com.example.todolist.global.security.jwt.properties.JwtExpTimeProperties
@@ -49,10 +48,8 @@ class JwtGenerator(
             .setExpiration(Date(System.currentTimeMillis() + jwtExpTimeProperties.refreshExp * 1000))
             .compact()
 
-        refreshTokenRepository.save(RefreshToken(email, refreshToken, jwtExpTimeProperties.refreshExp))
+        refreshTokenRepository.save(RefreshToken(refreshToken,email, jwtExpTimeProperties.refreshExp))
         return refreshToken
-
     }
-
 
 }
