@@ -34,6 +34,7 @@ open class SecurityConfig(
 
             // auth
             .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
+            .antMatchers(HttpMethod.PATCH, "/auth/**").permitAll()
 
             // todo
             .antMatchers(HttpMethod.GET, "/todo/**").authenticated()
@@ -51,4 +52,5 @@ open class SecurityConfig(
 
     @Bean
     open fun passwordEncoder(): PasswordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
+
 }
