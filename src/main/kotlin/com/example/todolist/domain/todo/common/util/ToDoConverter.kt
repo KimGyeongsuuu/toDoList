@@ -8,6 +8,7 @@ import com.example.todolist.domain.todo.presentation.data.response.ToDoResponse
 import com.example.todolist.domain.todo.usecase.dto.CreateToDoDto
 import com.example.todolist.domain.todo.usecase.dto.ToDoDetailDto
 import com.example.todolist.domain.todo.usecase.dto.ToDoDto
+import com.example.todolist.domain.todo.usecase.dto.UpdateToDoDto
 
 interface ToDoConverter {
     fun toToDoDto(toDo: ToDo, member: Member): ToDoDto
@@ -15,5 +16,6 @@ interface ToDoConverter {
     fun toToDoResponse(toDoDto: ToDoDto, member: Member): ToDoResponse
     fun toDetailToDoResponse(toDoDetailDto: ToDoDetailDto, member: Member): DetailToDoResponse
     fun toCreateToDoDto(toDoRequest: ToDoRequest): CreateToDoDto
+    fun toUpdateToDoDto(toDoRequest: ToDoRequest): UpdateToDoDto
     fun toEntity(createToDoDto: CreateToDoDto, member: Member): ToDo
 }

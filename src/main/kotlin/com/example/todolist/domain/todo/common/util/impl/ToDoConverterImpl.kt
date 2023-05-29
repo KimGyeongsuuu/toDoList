@@ -10,6 +10,7 @@ import com.example.todolist.domain.todo.presentation.data.response.ToDoResponse
 import com.example.todolist.domain.todo.usecase.dto.CreateToDoDto
 import com.example.todolist.domain.todo.usecase.dto.ToDoDetailDto
 import com.example.todolist.domain.todo.usecase.dto.ToDoDto
+import com.example.todolist.domain.todo.usecase.dto.UpdateToDoDto
 import org.springframework.stereotype.Component
 import java.util.*
 
@@ -50,6 +51,13 @@ class ToDoConverterImpl(
 
     override fun toCreateToDoDto(toDoRequest: ToDoRequest): CreateToDoDto =
         CreateToDoDto(
+            title = toDoRequest.title,
+            content = toDoRequest.content,
+            date = toDoRequest.date
+        )
+
+    override fun toUpdateToDoDto(toDoRequest: ToDoRequest): UpdateToDoDto =
+        UpdateToDoDto(
             title = toDoRequest.title,
             content = toDoRequest.content,
             date = toDoRequest.date
