@@ -6,6 +6,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 @ConfigurationProperties("jwt.time")
 class JwtExpTimeProperties(
-    val accessExp: Long,
-    val refreshExp: Long
+    val accessExp: Int,
+    val refreshExp: Int
 )
