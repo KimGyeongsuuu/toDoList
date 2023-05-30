@@ -45,6 +45,6 @@ class ToDoController(
     fun updateToDo(@PathVariable idx: UUID, @RequestBody @Valid toDoRequest: ToDoRequest): ResponseEntity<Void> =
         toDoConverter.toUpdateToDoDto(toDoRequest)
             .let { updateToDoUseCase.execute(idx, it) }
-            .let { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
+            .let { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 
 }
