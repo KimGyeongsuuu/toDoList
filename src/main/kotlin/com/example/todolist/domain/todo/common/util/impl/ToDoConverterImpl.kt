@@ -29,7 +29,6 @@ class ToDoConverterImpl(
         ToDoResponse(
             title = toDoDto.title,
             content = toDoDto.content,
-            writer = memberConverter.toMemberResponse(member),
             date = toDoDto.date
         )
 
