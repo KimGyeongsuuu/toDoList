@@ -4,7 +4,7 @@ import com.example.todolist.domain.auth.common.util.MemberUtil
 import com.example.todolist.domain.todo.common.exception.NotExistToDoListException
 import com.example.todolist.domain.todo.common.util.ToDoConverter
 import com.example.todolist.domain.todo.entity.repository.ToDoRepository
-import com.example.todolist.domain.todo.usecase.dto.ToDoDetailDto
+import com.example.todolist.domain.todo.usecase.dto.ToDoDto
 import com.example.todolist.global.annotation.UseCaseWithReadOnlyTransaction
 import java.util.*
 
@@ -15,9 +15,9 @@ class GetDetailToDoUseCase (
     private val memberUtil: MemberUtil
 ) {
 
-    fun execute(idx: UUID): ToDoDetailDto =
+    fun execute(idx: UUID): ToDoDto =
         toDoRepository.findByIdx(idx)
             .let { it ?: throw NotExistToDoListException() }
-            .let { toDoConverter.toDetailToDoDto(it, memberUtil.currentMember()) }
+            .let { toDoConverter.toToDoDto(it, memberUtil.currentMember()) }
 
 }

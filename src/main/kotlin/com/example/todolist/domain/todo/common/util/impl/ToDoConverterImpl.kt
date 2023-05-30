@@ -5,11 +5,10 @@ import com.example.todolist.domain.member.entity.Member
 import com.example.todolist.domain.todo.common.util.ToDoConverter
 import com.example.todolist.domain.todo.entity.ToDo
 import com.example.todolist.domain.todo.presentation.data.request.ToDoRequest
-import com.example.todolist.domain.todo.presentation.data.response.DetailToDoResponse
 import com.example.todolist.domain.todo.presentation.data.response.ToDoResponse
 import com.example.todolist.domain.todo.usecase.dto.CreateToDoDto
-import com.example.todolist.domain.todo.usecase.dto.ToDoDetailDto
 import com.example.todolist.domain.todo.usecase.dto.ToDoDto
+import com.example.todolist.domain.todo.usecase.dto.UpdateToDoDto
 import org.springframework.stereotype.Component
 import java.util.*
 
@@ -22,14 +21,7 @@ class ToDoConverterImpl(
         ToDoDto(
             title = toDo.title,
             content = toDo.content,
-            writer = member
-        )
-
-    override fun toDetailToDoDto(toDo: ToDo, member: Member): ToDoDetailDto =
-        ToDoDetailDto(
-            title = toDo.title,
-            content = toDo.content,
-            writer = toDo.member,
+            writer = member,
             date = toDo.date
         )
 
@@ -37,19 +29,18 @@ class ToDoConverterImpl(
         ToDoResponse(
             title = toDoDto.title,
             content = toDoDto.content,
-            writer = memberConverter.toMemberResponse(member)
-        )
-
-    override fun toDetailToDoResponse(toDoDetailDto: ToDoDetailDto, member: Member): DetailToDoResponse =
-        DetailToDoResponse(
-            title = toDoDetailDto.title,
-            content = toDoDetailDto.content,
-            writer = memberConverter.toMemberResponse(toDoDetailDto.writer),
-            date = toDoDetailDto.date
+            date = toDoDto.date
         )
 
     override fun toCreateToDoDto(toDoRequest: ToDoRequest): CreateToDoDto =
         CreateToDoDto(
+            title = toDoRequest.title,
+            content = toDoRequest.content,
+            date = toDoRequest.date
+        )
+
+    override fun toUpdateToDoDto(toDoRequest: ToDoRequest): UpdateToDoDto =
+        UpdateToDoDto(
             title = toDoRequest.title,
             content = toDoRequest.content,
             date = toDoRequest.date
