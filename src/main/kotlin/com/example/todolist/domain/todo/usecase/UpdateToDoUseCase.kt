@@ -20,7 +20,7 @@ class UpdateToDoUseCase(
         toDoRepository.findByIdOrNull(idx)
             .let { it ?: throw NotExistToDoListException() }
             .let { verifyMember(it) }
-            .let { it.updateToDo(updateToDoDto) }
+            .let { it.updateToDo(updateToDoDto.title,updateToDoDto.content,updateToDoDto.date) }
     }
 
     private fun verifyMember(toDo: ToDo): ToDo {

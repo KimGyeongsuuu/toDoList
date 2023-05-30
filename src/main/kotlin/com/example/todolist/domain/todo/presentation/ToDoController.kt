@@ -2,7 +2,6 @@ package com.example.todolist.domain.todo.presentation
 
 import com.example.todolist.domain.todo.common.util.ToDoConverter
 import com.example.todolist.domain.todo.presentation.data.request.ToDoRequest
-import com.example.todolist.domain.todo.presentation.data.response.DetailToDoResponse
 import com.example.todolist.domain.todo.presentation.data.response.ToDoResponse
 import com.example.todolist.domain.todo.usecase.CreateToDoUseCase
 import com.example.todolist.domain.todo.usecase.GetDetailToDoUseCase
@@ -37,9 +36,9 @@ class ToDoController(
             .let { ResponseEntity.ok(it) }
 
     @GetMapping("/{idx}")
-    fun getDetailToDo(@PathVariable idx: UUID): ResponseEntity<DetailToDoResponse> =
+    fun getDetailToDo(@PathVariable idx: UUID): ResponseEntity<ToDoResponse> =
         getDetailToDoUseCase.execute(idx)
-            .let { toDoConverter.toDetailToDoResponse(it, it.writer) }
+            .let { toDoConverter.toToDoResponse(it, it.writer) }
             .let { ResponseEntity.ok(it) }
 
     @PatchMapping("/{idx}")

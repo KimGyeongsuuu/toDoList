@@ -19,12 +19,13 @@ class ToDo(
     @JoinColumn(name = "member_id")
     val member: Member,
     @Column(name = "date")
-    val date: LocalDate
+    var date: LocalDate
 ) : BaseUUIDEntity(idx) {
 
-    fun updateToDo(updateToDoDto: UpdateToDoDto) {
-        this.title = updateToDoDto.title
-        this.content = updateToDoDto.content
+    fun updateToDo(title: String, content: String, date: LocalDate) {
+        this.title = title
+        this.content = content
+        this.date = date
     }
 
 }
