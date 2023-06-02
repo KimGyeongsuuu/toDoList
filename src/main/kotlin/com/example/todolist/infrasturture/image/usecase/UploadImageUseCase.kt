@@ -1,4 +1,4 @@
-package com.example.todolist.domain.image.usecase
+package com.example.todolist.infrasturture.image.usecase
 
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.CannedAccessControlList
@@ -20,10 +20,10 @@ class UploadImageUseCase(
     @Value("\${cloud.aws.s3.bucket}")
     private val bucket: String? = null
 
-    fun execute(multipartFiles: List<MultipartFile>?): List<String> {
+    fun execute(multipartFile: MultipartFile?): List<String> {
         val fileNameList = ArrayList<String>()
 
-        multipartFiles.orEmpty().forEach { file ->
+        multipartFile?.let { file ->
             val fileName: String = createFileName(file.originalFilename.toString())
             val objectMetadata = ObjectMetadata()
             objectMetadata.contentLength = file.size
