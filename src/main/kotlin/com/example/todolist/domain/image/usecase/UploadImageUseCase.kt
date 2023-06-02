@@ -42,10 +42,6 @@ class UploadImageUseCase(
         return fileNameList
     }
 
-    fun deleteFile(fileName: String) {
-        amazonS3.deleteObject(DeleteObjectRequest(bucket, fileName))
-    }
-
     private fun createFileName(fileName: String) =
         UUID.randomUUID().toString() + fileName
 
