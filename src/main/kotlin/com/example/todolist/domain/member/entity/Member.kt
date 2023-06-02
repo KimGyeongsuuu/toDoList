@@ -16,7 +16,7 @@ class Member(
     @Column(name = "name")
     val name: String,
     @Column(name = "profile_image_url")
-    val profileImageUrl: String,
+    val profileImageUrl: String?,
 @Enumerated(EnumType.STRING)
     val role: Role
 ) : BaseUUIDEntity(idx)
