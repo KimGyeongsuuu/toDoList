@@ -15,6 +15,8 @@ class Member(
     val password: String,
     @Column(name = "name")
     val name: String,
-    @Enumerated(EnumType.STRING)
+    @Column(name = "profile_image_url")
+    val profileImageUrl: String,
+@Enumerated(EnumType.STRING)
     val role: Role
 ) : BaseUUIDEntity(idx)
