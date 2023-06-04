@@ -20,7 +20,7 @@ class UploadImageUseCase(
     @Value("\${cloud.aws.s3.bucket}")
     private val bucket: String? = null
 
-    override fun execute(multipartFile: MultipartFile?): String {
+    override fun execute(multipartFile: MultipartFile): String {
         val fileNameList = String()
 
         multipartFile?.let { file ->
