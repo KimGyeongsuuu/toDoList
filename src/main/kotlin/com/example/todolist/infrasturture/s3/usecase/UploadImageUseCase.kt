@@ -20,8 +20,8 @@ class UploadImageUseCase(
     @Value("\${cloud.aws.s3.bucket}")
     private val bucket: String? = null
 
-    override fun execute(multipartFile: MultipartFile?): List<String> {
-        val fileNameList = ArrayList<String>()
+    override fun execute(multipartFile: MultipartFile?): String {
+        val fileNameList = String()
 
         multipartFile?.let { file ->
             val fileName: String = createFileName(file.originalFilename.toString())
@@ -37,7 +37,7 @@ class UploadImageUseCase(
             } catch (e: IOException) {
                 throw IllegalStateException("파일 업로드에 실패했습니다.")
             }
-            fileNameList.add(fileName)
+            fileNameList.plus(fileName)
         }
         return fileNameList
     }

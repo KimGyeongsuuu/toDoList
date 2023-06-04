@@ -25,7 +25,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     runtimeOnly("com.mysql:mysql-connector-j")
 
-
     /* security */
     implementation("org.springframework.boot:spring-boot-starter-security")
 
@@ -49,7 +48,6 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.4.2")
     implementation("io.kotest:kotest-extensions-spring:5.4.2")
     testImplementation("io.mockk:mockk:1.12.0")
-
 
     /* jwt */
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
