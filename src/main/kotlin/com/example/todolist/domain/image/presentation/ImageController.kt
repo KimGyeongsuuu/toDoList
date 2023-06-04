@@ -1,6 +1,6 @@
-package com.example.todolist.infrasturture.image.presentation
+package com.example.todolist.domain.image.presentation
 
-import com.example.todolist.infrasturture.image.usecase.UploadImageUseCase
+import com.example.todolist.domain.image.usecase.UploadImageUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,9 +14,8 @@ class ImageController(
 ) {
 
     @PostMapping
-    fun uploadProfileImg(multipartFiles: MultipartFile): ResponseEntity<List<String>> {
+    fun uploadProfileImg(multipartFiles: MultipartFile): ResponseEntity<List<String>> =
         uploadImageUseCase.execute(multipartFiles)
-            .let { return ResponseEntity.ok(it) }
-    }
+            .let { ResponseEntity.ok(it) }
 
 }
