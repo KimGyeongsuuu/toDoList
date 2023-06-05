@@ -21,8 +21,8 @@ class Member(
     val role: Role
 ) : BaseUUIDEntity(idx) {
 
-    fun updateImage(imageUrl: String) {
-        this.profileImageUrl = imageUrl
+    fun updateProfileImageUrl(profileImageUrl: String) {
+        this.profileImageUrl = profileImageUrl
     }
 
 }

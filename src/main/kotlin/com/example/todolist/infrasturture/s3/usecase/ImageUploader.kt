@@ -17,7 +17,7 @@ import java.io.IOException
 import java.util.*
 
 @UseCaseWithTransaction
-class UploadImageUseCase(
+class ImageUploader(
     private val amazonS3: AmazonS3,
     private val memberUtil: MemberUtil
 ) : UploadImageUseCase {
@@ -44,7 +44,7 @@ class UploadImageUseCase(
             }
         }
 
-        currentMember.updateImage(fileName)
+        currentMember.updateProfileImageUrl(fileName)
         val url = amazonS3.getUrl(bucket, fileName).toString()
         return url
     }
