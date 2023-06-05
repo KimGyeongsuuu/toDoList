@@ -14,8 +14,8 @@ class ImageController(
 ) {
 
     @PostMapping
-    fun uploadImage(multipartFiles: MultipartFile): ResponseEntity<String> =
-        uploadImageUseCase.execute(multipartFiles)
+    fun uploadImage(multipartFile: MultipartFile): ResponseEntity<String> =
+        uploadImageUseCase.execute(multipartFile)
             .let { ResponseEntity.ok(it) }
 
 }

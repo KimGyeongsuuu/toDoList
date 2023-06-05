@@ -16,7 +16,13 @@ class Member(
     @Column(name = "name")
     val name: String,
     @Column(name = "profile_image_url")
-    val profileImageUrl: String?,
-@Enumerated(EnumType.STRING)
+    var profileImageUrl: String,
+    @Enumerated(EnumType.STRING)
     val role: Role
-) : BaseUUIDEntity(idx)
+) : BaseUUIDEntity(idx) {
+
+    fun updateImage(imageUrl: String) {
+        this.profileImageUrl = imageUrl
+    }
+
+}
