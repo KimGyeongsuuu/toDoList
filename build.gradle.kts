@@ -25,7 +25,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     runtimeOnly("com.mysql:mysql-connector-j")
 
-
     /* security */
     implementation("org.springframework.boot:spring-boot-starter-security")
 
@@ -44,10 +43,19 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
 
+    /* kotest */
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:5.4.2")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.4.2")
+    implementation("io.kotest:kotest-extensions-spring:5.4.2")
+    testImplementation("io.mockk:mockk:1.12.0")
+
     /* jwt */
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
+    /* aws */
+    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
 
 }
 

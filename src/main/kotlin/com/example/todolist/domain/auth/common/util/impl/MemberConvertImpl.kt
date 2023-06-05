@@ -54,6 +54,7 @@ class MemberConvertImpl : MemberConverter {
             email = signUpDto.email,
             password = encodePassword,
             name = signUpDto.name,
+            profileImageUrl = "",
             role = Role.MEMBER
         )
 

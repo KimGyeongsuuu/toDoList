@@ -15,6 +15,14 @@ class Member(
     val password: String,
     @Column(name = "name")
     val name: String,
+    @Column(name = "profile_image_url")
+    var profileImageUrl: String,
     @Enumerated(EnumType.STRING)
     val role: Role
-) : BaseUUIDEntity(idx)
+) : BaseUUIDEntity(idx) {
+
+    fun updateProfileImageUrl(profileImageUrl: String) {
+        this.profileImageUrl = profileImageUrl
+    }
+
+}

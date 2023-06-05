@@ -45,6 +45,9 @@ open class SecurityConfig(
             // health
             .antMatchers(HttpMethod.GET, "/health/**").permitAll()
 
+            // image
+            .antMatchers(HttpMethod.POST, "/image/**").authenticated()
+
             .anyRequest().denyAll()
             .and()
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter::class.java)
