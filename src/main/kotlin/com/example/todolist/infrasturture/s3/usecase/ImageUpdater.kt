@@ -19,7 +19,7 @@ class ImageUpdater(
     private val memberUtil: MemberUtil
 ) : ImageUpdateUseCase {
 
-    override fun execute(multipartFile: MultipartFile){
+    override fun execute(multipartFile: MultipartFile) {
         val currentMember = memberUtil.currentMember()
         if (currentMember.profileImageUrl.isEmpty()) {
             throw NotExistImageException()
