@@ -21,6 +21,6 @@ enum class ErrorCode(
     NOT_EXIST_TODOLIST("존재하지 않은 투두리스트입니다.", 404),
 
     // EXTENSTION
-    MISMATCH_EXTENSION("익스텐션이 일치하지 않습니다.",400);
+    MISMATCH_EXTENSION("익스텐션이 일치하지 않습니다.", 400);
 
 }
