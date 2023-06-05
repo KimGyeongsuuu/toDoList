@@ -5,7 +5,7 @@ import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
 import com.example.todolist.domain.auth.common.util.MemberUtil
-import com.example.todolist.domain.image.usecase.UploadImageUseCase
+import com.example.todolist.domain.image.usecase.ImageUploadUseCase
 import com.example.todolist.domain.member.entity.Member
 import com.example.todolist.global.annotation.UseCaseWithTransaction
 import com.example.todolist.infrasturture.common.exception.MisMatchExtensionException
@@ -20,7 +20,7 @@ import java.util.*
 class ImageUploader(
     private val amazonS3: AmazonS3,
     private val memberUtil: MemberUtil
-) : UploadImageUseCase {
+) : ImageUploadUseCase {
 
     @Value("\${cloud.aws.s3.bucket}")
     private val bucket: String? = null
