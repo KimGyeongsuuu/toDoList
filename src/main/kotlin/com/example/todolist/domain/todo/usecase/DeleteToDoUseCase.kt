@@ -16,17 +16,16 @@ class DeleteToDoUseCase(
 ) {
 
     fun execute(idx: UUID) {
-        toDoRepository.findByIdOrNull(idx)
+        val toDo = toDoRepository.findByIdOrNull(idx)
             .let { it ?: throw NotExistToDoListException() }
-            .let { verifyMember(it) }
-            .let { toDoRepository.delete(it) }
+        verifyMember(toDo)
+        toDoRepository.delete(toDo)
     }
 
-    private fun verifyMember(toDo: ToDo): ToDo {
+    private fun verifyMember(toDo: ToDo) {
         if (!memberUtil.currentMember().equals(toDo.member)) {
             throw NotVerifyMemberException()
         }
-        return toDo
     }
 
 }

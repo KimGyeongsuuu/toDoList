@@ -17,17 +17,16 @@ class UpdateToDoUseCase(
 ) {
 
     fun execute(idx: UUID, updateToDoDto: UpdateToDoDto) {
-        toDoRepository.findByIdOrNull(idx)
+        val toDo = toDoRepository.findByIdOrNull(idx)
             .let { it ?: throw NotExistToDoListException() }
-            .let { verifyMember(it) }
-            .let { it.updateToDo(updateToDoDto.title,updateToDoDto.content,updateToDoDto.date) }
+        verifyMember(toDo)
+        toDo.updateToDo(updateToDoDto.title, updateToDoDto.content, updateToDoDto.date)
     }
 
-    private fun verifyMember(toDo: ToDo): ToDo {
+    private fun verifyMember(toDo: ToDo) {
         if (!memberUtil.currentMember().equals(toDo.member)) {
             throw NotVerifyMemberException()
         }
-        return toDo
     }
 
 }
