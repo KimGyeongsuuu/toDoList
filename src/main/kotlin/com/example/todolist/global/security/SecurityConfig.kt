@@ -47,6 +47,7 @@ open class SecurityConfig(
 
             // image
             .antMatchers(HttpMethod.POST, "/image/**").authenticated()
+            .antMatchers(HttpMethod.PATCH, "/image/**").authenticated()
 
             .anyRequest().denyAll()
             .and()
